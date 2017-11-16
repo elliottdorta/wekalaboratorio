@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class interfazGrafica {
 
@@ -53,7 +54,8 @@ public class interfazGrafica {
 		frmProyectoFinalWeka.getContentPane().add(btnCargarArchvio);
 		
 		JLabel lblProyectoFinalDe = new JLabel("Proyecto final de Laboratorio de Desarrollo y Herramientas");
-		lblProyectoFinalDe.setBounds(133, 12, 333, 16);
+		lblProyectoFinalDe.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblProyectoFinalDe.setBounds(98, 12, 415, 16);
 		frmProyectoFinalWeka.getContentPane().add(lblProyectoFinalDe);
 		
 		textField = new JTextField();
