@@ -50,6 +50,10 @@ public class interfazGrafica {
 		frmProyectoFinalWeka.getContentPane().setLayout(null);
 		
 		JButton btnCargarArchvio = new JButton("Cargar Archvio");
+		btnCargarArchvio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCargarArchvio.setBounds(12, 44, 124, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnCargarArchvio);
 		
