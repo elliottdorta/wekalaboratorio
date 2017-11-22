@@ -4,16 +4,25 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.awt.event.ActionEvent;
 
 public class interfazGrafica {
 
 	private JFrame frmProyectoFinalWeka;
 	private JTextField textField;
+	private JTextField areaResultados;
 
 	/**
 	 * Launch the application.
@@ -47,6 +56,20 @@ public class interfazGrafica {
 		frmProyectoFinalWeka.getContentPane().setLayout(null);
 		
 		JButton btnCargarArchvio = new JButton("Cargar Archvio");
+		btnCargarArchvio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jf = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT", "txt");
+				jf.setFileFilter(filter);
+				int seleccion = jf.showSaveDialog(textField);
+				if (seleccion == JFileChooser.APPROVE_OPTION)
+				{
+				   File fichero = jf.getSelectedFile();
+				   // Aquí debemos abrir y leer el fichero.
+				   // 
+				}
+				}
+			});
 		btnCargarArchvio.setBounds(12, 44, 124, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnCargarArchvio);
 		
@@ -92,10 +115,10 @@ public class interfazGrafica {
 		btnKstart.setBounds(436, 153, 98, 26);
 		frmProyectoFinalWeka.getContentPane().add(btnKstart);
 		
-		JLabel lblNewLabel = new JLabel("Resultados");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(38, 202, 515, 239);
-		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
+		areaResultados = new JTextField();
+		areaResultados.setBounds(22, 201, 564, 240);
+		frmProyectoFinalWeka.getContentPane().add(areaResultados);
+		areaResultados.setColumns(10);
 		frmProyectoFinalWeka.setBackground(Color.RED);
 		frmProyectoFinalWeka.setTitle("Proyecto Final Weka LDH 2017/18");
 		frmProyectoFinalWeka.setBounds(100, 100, 614, 492);
