@@ -18,7 +18,7 @@ public class interfazGrafica {
 	private JTextField textField;
 
 	/**
-	 * Launch the application.
+	 * Main Principal de la Ventana.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -34,14 +34,14 @@ public class interfazGrafica {
 	}
 
 	/**
-	 * Create the application.
+	 * Crea la aplicación.
 	 */
 	public interfazGrafica() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializa el contennido del frame.
 	 */
 	private void initialize() {
 		frmProyectoFinalWeka = new JFrame();

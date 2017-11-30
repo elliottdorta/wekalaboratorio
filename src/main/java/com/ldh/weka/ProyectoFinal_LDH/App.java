@@ -1,7 +1,7 @@
 package com.ldh.weka.ProyectoFinal_LDH;
 
 /**
- * Hello world!
+ * Main Principal
  *
  */
 public class App 
