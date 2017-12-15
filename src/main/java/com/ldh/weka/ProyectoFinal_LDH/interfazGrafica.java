@@ -4,7 +4,7 @@ package com.ldh.weka.ProyectoFinal_LDH;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -59,7 +59,7 @@ public class interfazGrafica {
 	 */
 	private void initialize() {
 		frmProyectoFinalWeka = new JFrame();
-		frmProyectoFinalWeka.setBounds(100, 100, 654, 604);
+		frmProyectoFinalWeka.setBounds(100, 100, 1054, 604);
 		frmProyectoFinalWeka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmProyectoFinalWeka.getContentPane().setLayout(null);
 		
@@ -68,11 +68,16 @@ public class interfazGrafica {
 		scroll = new JScrollPane(textArea);    
         scroll.setBounds(new Rectangle(23,211,286,344));                                                    
         frmProyectoFinalWeka.add(scroll);
+        
+        JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(interfazGrafica.class.getResource("/images/logoLDH.png")));
+		lblNewLabel.setBounds(700, 40, 250, 120);
+		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
 		
 		final JTextArea textArea_1 = new JTextArea();
 		textArea_1.setEditable(false);
 		scroll2 = new JScrollPane(textArea_1);    
-        scroll2.setBounds(new Rectangle(330,211,286,344));                                                    
+        scroll2.setBounds(new Rectangle(330,211,686,344));                                                    
         frmProyectoFinalWeka.add(scroll2);
 		
 		JLabel lblDatos = new JLabel("DATOS");
@@ -185,5 +190,7 @@ public class interfazGrafica {
 		textField.setEditable(false);
 		frmProyectoFinalWeka.getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		
 	}
 }
