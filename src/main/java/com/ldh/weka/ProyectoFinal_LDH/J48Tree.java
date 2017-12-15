@@ -11,8 +11,7 @@ import weka.core.converters.ArffLoader;
 
 /**
  * Apply J48Tree from weka to the data set
- * @author carsonchen
- *
+ * @author Elliott Dorta
  */
 public class J48Tree {
 
