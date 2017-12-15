@@ -6,16 +6,20 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
 
 public class interfazGrafica {
 
 	private JFrame frmProyectoFinalWeka;
-	private JTextField textField;
+	
+	File[] file_data = null;
+	private JEditorPane dtrpnResultado;
 
 	/**
 	 * Main Principal de la Ventana.
@@ -48,63 +52,105 @@ public class interfazGrafica {
 		frmProyectoFinalWeka.getContentPane().setBackground(Color.WHITE);
 		frmProyectoFinalWeka.getContentPane().setLayout(null);
 		
-		JButton btnCargarArchvio = new JButton("Cargar Archvio");
-		btnCargarArchvio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCargarArchvio.setBounds(12, 44, 124, 23);
-		frmProyectoFinalWeka.getContentPane().add(btnCargarArchvio);
-		
 		JLabel lblProyectoFinalDe = new JLabel("Proyecto final de Laboratorio de Desarrollo y Herramientas");
 		lblProyectoFinalDe.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblProyectoFinalDe.setBounds(98, 12, 415, 16);
+		lblProyectoFinalDe.setBounds(74, 21, 468, 28);
 		frmProyectoFinalWeka.getContentPane().add(lblProyectoFinalDe);
+
+		JPanel panel_resultado = new JPanel();
+		panel_resultado.setBackground(Color.WHITE);
+		panel_resultado.setBounds(22, 251, 570, 373);
+		frmProyectoFinalWeka.getContentPane().add(panel_resultado);
+		panel_resultado.setLayout(null);	
 		
-		textField = new JTextField();
-		textField.setBounds(143, 45, 423, 20);
-		frmProyectoFinalWeka.getContentPane().add(textField);
-		textField.setColumns(10);
+		dtrpnResultado = new JEditorPane();
+		dtrpnResultado.setBounds(2, 2, 550, 313);
+		panel_resultado.add(dtrpnResultado);
+		dtrpnResultado.setEditable(false);
+
+		
+		final JScrollPane scrollBar = new JScrollPane(dtrpnResultado);
+		scrollBar.setBounds(10, 39, 554, 313);
+		panel_resultado.add(scrollBar);
+		
+		JLabel lblResultados_1 = new JLabel("Resultados:");
+		lblResultados_1.setBounds(10, 11, 116, 16);
+		panel_resultado.add(lblResultados_1);
+		
+		JPanel panel_archivo = new JPanel();
+		panel_archivo.setBackground(Color.WHITE);
+		panel_archivo.setBounds(74, 69, 461, 37);
+		frmProyectoFinalWeka.getContentPane().add(panel_archivo);
+		
+		JButton btnCargarArchvio = new JButton("Cargar Archvio");
+		panel_archivo.add(btnCargarArchvio);
+		
+		JLabel lblNombreArchivo = new JLabel("Nombre_Archivo");
+		panel_archivo.add(lblNombreArchivo);
+		
+		JPanel panel_seleccion = new JPanel();
+		panel_seleccion.setBackground(Color.WHITE);
+		panel_seleccion.setBounds(22, 118, 570, 80);
+		frmProyectoFinalWeka.getContentPane().add(panel_seleccion);
 		
 		JButton btnKmeans = new JButton("K-MEANS");
-		btnKmeans.setBounds(12, 102, 98, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnKmeans);
+		panel_seleccion.add(btnKmeans);
 		
 		JButton btnRegresinS = new JButton("REGRESIÓN S");
-		btnRegresinS.setBounds(133, 102, 111, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnRegresinS);
+		panel_seleccion.add(btnRegresinS);
 		
 		JButton btnRegresinM = new JButton("REGRESIÓN M");
-		btnRegresinM.setBounds(274, 102, 124, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnRegresinM);
+		panel_seleccion.add(btnRegresinM);
 		
 		JButton btnRamdonForest = new JButton("RAMDON FOREST");
-		btnRamdonForest.setBounds(420, 102, 146, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnRamdonForest);
+		panel_seleccion.add(btnRamdonForest);
 		
 		JButton btnMp = new JButton("MP5");
-		btnMp.setBounds(38, 153, 98, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnMp);
+		panel_seleccion.add(btnMp);
 		
 		JButton btnZeror = new JButton("ZeroR");
-		btnZeror.setBounds(165, 153, 98, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnZeror);
+		panel_seleccion.add(btnZeror);
 		
 		JButton btnJ = new JButton("J48");
-		btnJ.setBounds(301, 153, 98, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnJ);
+		panel_seleccion.add(btnJ);
 		
 		JButton btnKstart = new JButton("KStart");
-		btnKstart.setBounds(436, 153, 98, 26);
-		frmProyectoFinalWeka.getContentPane().add(btnKstart);
+		panel_seleccion.add(btnKstart);
 		
-		JLabel lblNewLabel = new JLabel("Resultados");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(38, 202, 515, 239);
-		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(22, 210, 570, 29);
+		frmProyectoFinalWeka.getContentPane().add(panel);
+		
+		JLabel lblAlgortimoSeleccionado = new JLabel("Algortimo Seleccionado:");
+		panel.add(lblAlgortimoSeleccionado);
+		
+		JLabel lblAlgoritmo = new JLabel("algoritmo");
+		panel.add(lblAlgoritmo);
+		btnKstart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LazyKStar kstar = new LazyKStar(file_data[0]);
+				try {
+					dtrpnResultado.setText(kstar.PrintResult());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnCargarArchvio.addActionListener(new ActionListener() {
+			File[] file_input = null;
+			public void actionPerformed(ActionEvent e) {
+				file_input= new FileSelector().chooseFiles();
+                if(file_input != null){
+                		//System.out.println( "Fichero cargado correctamente" );
+                		file_data = file_input;
+                }
+			}
+		});
+		
 		frmProyectoFinalWeka.setBackground(Color.RED);
 		frmProyectoFinalWeka.setTitle("Proyecto Final Weka LDH 2017/18");
-		frmProyectoFinalWeka.setBounds(100, 100, 614, 492);
+		frmProyectoFinalWeka.setBounds(100, 100, 614, 652);
 		frmProyectoFinalWeka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
