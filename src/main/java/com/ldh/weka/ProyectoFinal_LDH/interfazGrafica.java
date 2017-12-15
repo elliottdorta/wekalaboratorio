@@ -156,11 +156,11 @@ public class interfazGrafica {
 		btnKstart.setBounds(483, 129, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnKstart);
 		
-		JLabel lblSeleccionarFichero = new JLabel("SELECCIONAR FICHERO");
+		JLabel lblSeleccionarFichero = new JLabel("Select File");
 		lblSeleccionarFichero.setBounds(23, 38, 132, 14);
 		frmProyectoFinalWeka.getContentPane().add(lblSeleccionarFichero);
 		
-		final JButton btnAbrir = new JButton("Abrir");
+		final JButton btnAbrir = new JButton("Open");
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		        
 		        JFileChooser selectorArchivos = new JFileChooser();
