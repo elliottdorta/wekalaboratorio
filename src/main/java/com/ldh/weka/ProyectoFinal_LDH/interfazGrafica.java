@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -50,7 +51,12 @@ public class interfazGrafica {
 		
 		JButton btnCargarArchvio = new JButton("Cargar Archvio");
 		btnCargarArchvio.addActionListener(new ActionListener() {
+			File[] retorno = null;
 			public void actionPerformed(ActionEvent e) {
+				retorno = new FileSelector().chooseFiles();
+                if(retorno != null){
+                		System.out.println( "Fichero cargado correctamente" );
+                }
 			}
 		});
 		btnCargarArchvio.setBounds(12, 44, 124, 23);
@@ -58,7 +64,7 @@ public class interfazGrafica {
 		
 		JLabel lblProyectoFinalDe = new JLabel("Proyecto final de Laboratorio de Desarrollo y Herramientas");
 		lblProyectoFinalDe.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblProyectoFinalDe.setBounds(98, 12, 415, 16);
+		lblProyectoFinalDe.setBounds(80, 16, 468, 16);
 		frmProyectoFinalWeka.getContentPane().add(lblProyectoFinalDe);
 		
 		textField = new JTextField();
@@ -104,7 +110,7 @@ public class interfazGrafica {
 		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
 		frmProyectoFinalWeka.setBackground(Color.RED);
 		frmProyectoFinalWeka.setTitle("Proyecto Final Weka LDH 2017/18");
-		frmProyectoFinalWeka.setBounds(100, 100, 614, 492);
+		frmProyectoFinalWeka.setBounds(100, 100, 614, 792);
 		frmProyectoFinalWeka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
