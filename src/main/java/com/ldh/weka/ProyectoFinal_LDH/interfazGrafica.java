@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.ldh.weka.ProyectoFinal_LDH;
 
 import java.awt.EventQueue;
@@ -31,6 +34,8 @@ public class interfazGrafica {
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
