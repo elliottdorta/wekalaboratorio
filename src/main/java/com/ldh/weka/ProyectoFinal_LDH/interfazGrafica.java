@@ -69,10 +69,10 @@ public class interfazGrafica {
         scroll.setBounds(new Rectangle(23,211,286,344));                                                    
         frmProyectoFinalWeka.add(scroll);
         
-        JLabel lblNewLabel = new JLabel("");
+       /* JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(interfazGrafica.class.getResource("/images/logoLDH.png")));
 		lblNewLabel.setBounds(700, 40, 250, 120);
-		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
+		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);*/
 		
 		final JTextArea textArea_1 = new JTextArea();
 		textArea_1.setEditable(false);
