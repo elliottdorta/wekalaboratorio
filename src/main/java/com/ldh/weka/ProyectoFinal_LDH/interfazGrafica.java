@@ -1,10 +1,8 @@
-
 package com.ldh.weka.ProyectoFinal_LDH;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -28,6 +26,9 @@ public class interfazGrafica {
 	private JTextField textField;
 	JScrollPane scroll, scroll2; 
 	File archivo = null;
+	JTextArea textArea;
+	JTextArea textArea_1;
+	JButton btnNewButton, btnRegresionS, btnRegresinM, btnMp, btnZeror, btnRamdonForest, btnJ, btnKstart, btnAbrir;
 
 	/**
 	 * Launch the application.
@@ -63,18 +64,13 @@ public class interfazGrafica {
 		frmProyectoFinalWeka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmProyectoFinalWeka.getContentPane().setLayout(null);
 		
-		final JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setEditable(false);
 		scroll = new JScrollPane(textArea);    
         scroll.setBounds(new Rectangle(23,211,286,344));                                                    
         frmProyectoFinalWeka.add(scroll);
-        
-        JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(interfazGrafica.class.getResource("/images/logoLDH.png")));
-		lblNewLabel.setBounds(700, 40, 250, 120);
-		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
 		
-		final JTextArea textArea_1 = new JTextArea();
+		textArea_1 = new JTextArea();
 		textArea_1.setEditable(false);
 		scroll2 = new JScrollPane(textArea_1);    
         scroll2.setBounds(new Rectangle(330,211,686,344));                                                    
@@ -88,47 +84,53 @@ public class interfazGrafica {
 		lblResultado.setBounds(442, 186, 79, 14);
 		frmProyectoFinalWeka.getContentPane().add(lblResultado);
 		
-		JButton btnNewButton = new JButton("K-MEANS");
+		btnNewButton = new JButton("K-MEANS");
 		btnNewButton.setBounds(23, 79, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnNewButton);
 		
-		JButton btnRegresionS = new JButton("REGRESION S");
+		btnRegresionS = new JButton("REGRESION S");
 		btnRegresionS.setBounds(177, 79, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnRegresionS);
 		
-		JButton btnRegresinM = new JButton("REGRESIÓN M");
+		btnRegresinM = new JButton("REGRESIÓN M");
 		btnRegresinM.setBounds(330, 79, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnRegresinM);
 		
-		JButton btnRamdonForest = new JButton("RAMDON FOREST");
+		btnRamdonForest = new JButton("RAMDON FOREST");
 		btnRamdonForest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textArea_1.setText("");
-				Algoritmos_MA alg = new Algoritmos_MA(textField.getText());
-				alg.setTipo(1);
-				textArea_1.setText(alg.ejecutarRandomForest());				
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				RandomForest_Tree random = new RandomForest_Tree(archivo);
+				try {
+					textArea_1.setText(random.resultado);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnRamdonForest.setBounds(483, 79, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnRamdonForest);
 		
-		JButton btnMp = new JButton("MP5");
+		btnMp = new JButton("MP5");
 		btnMp.setBounds(23, 129, 135, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnMp);
 		
-		JButton btnZeror = new JButton("ZeroR");
+		btnZeror = new JButton("ZeroR");
 		btnZeror.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textArea_1.setText("");
-				Algoritmos_MA alg = new Algoritmos_MA(textField.getText());
-				alg.setTipo(1);
-				textArea_1.setText(alg.ejecutarZeroR());			
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				ZeroR_Alg zero = new ZeroR_Alg(archivo);
+				try {
+					textArea_1.setText(zero.resultado);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnZeror.setBounds(177, 129, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnZeror);
 		
-		JButton btnJ = new JButton("J48");
+		btnJ = new JButton("J48");
 		btnJ.addActionListener(new ActionListener() {	
 		public void actionPerformed(ActionEvent e) {
 			J48Tree j48 = new J48Tree(archivo);
@@ -142,7 +144,7 @@ public class interfazGrafica {
 		btnJ.setBounds(330, 129, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnJ);
 		
-		JButton btnKstart = new JButton("KStart");
+		btnKstart = new JButton("KStart");
 		btnKstart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LazyKStar kstar = new LazyKStar(archivo);
@@ -160,7 +162,7 @@ public class interfazGrafica {
 		lblSeleccionarFichero.setBounds(23, 38, 132, 14);
 		frmProyectoFinalWeka.getContentPane().add(lblSeleccionarFichero);
 		
-		final JButton btnAbrir = new JButton("Open");
+		btnAbrir = new JButton("Open");
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		        
 		        JFileChooser selectorArchivos = new JFileChooser();
