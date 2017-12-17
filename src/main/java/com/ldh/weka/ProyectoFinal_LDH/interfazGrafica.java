@@ -1,9 +1,10 @@
+
 package com.ldh.weka.ProyectoFinal_LDH;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -11,16 +12,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
-import java.awt.Font;
+
 import java.awt.Rectangle;
 
-import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.JPanel;
+
 
 public class interfazGrafica {
 
@@ -31,6 +31,8 @@ public class interfazGrafica {
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -57,7 +59,7 @@ public class interfazGrafica {
 	 */
 	private void initialize() {
 		frmProyectoFinalWeka = new JFrame();
-		frmProyectoFinalWeka.setBounds(100, 100, 654, 604);
+		frmProyectoFinalWeka.setBounds(100, 100, 1054, 604);
 		frmProyectoFinalWeka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmProyectoFinalWeka.getContentPane().setLayout(null);
 		
@@ -66,11 +68,16 @@ public class interfazGrafica {
 		scroll = new JScrollPane(textArea);    
         scroll.setBounds(new Rectangle(23,211,286,344));                                                    
         frmProyectoFinalWeka.add(scroll);
+        
+        JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(interfazGrafica.class.getResource("/images/logoLDH.png")));
+		lblNewLabel.setBounds(700, 40, 250, 120);
+		frmProyectoFinalWeka.getContentPane().add(lblNewLabel);
 		
 		final JTextArea textArea_1 = new JTextArea();
 		textArea_1.setEditable(false);
 		scroll2 = new JScrollPane(textArea_1);    
-        scroll2.setBounds(new Rectangle(330,211,286,344));                                                    
+        scroll2.setBounds(new Rectangle(330,211,686,344));                                                    
         frmProyectoFinalWeka.add(scroll2);
 		
 		JLabel lblDatos = new JLabel("DATOS");
@@ -115,13 +122,23 @@ public class interfazGrafica {
 				textArea_1.setText("");
 				Algoritmos_MA alg = new Algoritmos_MA(textField.getText());
 				alg.setTipo(1);
-				textArea_1.setText(alg.ejecutarZeroR());				
+				textArea_1.setText(alg.ejecutarZeroR());			
 			}
 		});
 		btnZeror.setBounds(177, 129, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnZeror);
 		
 		JButton btnJ = new JButton("J48");
+		btnJ.addActionListener(new ActionListener() {	
+		public void actionPerformed(ActionEvent e) {
+			J48Tree j48 = new J48Tree(archivo);
+			try {
+				textArea_1.setText(j48.resultado);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		});
 		btnJ.setBounds(330, 129, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnJ);
 		
@@ -139,11 +156,11 @@ public class interfazGrafica {
 		btnKstart.setBounds(483, 129, 132, 23);
 		frmProyectoFinalWeka.getContentPane().add(btnKstart);
 		
-		JLabel lblSeleccionarFichero = new JLabel("SELECCIONAR FICHERO");
+		JLabel lblSeleccionarFichero = new JLabel("Select File");
 		lblSeleccionarFichero.setBounds(23, 38, 132, 14);
 		frmProyectoFinalWeka.getContentPane().add(lblSeleccionarFichero);
 		
-		final JButton btnAbrir = new JButton("Abrir");
+		final JButton btnAbrir = new JButton("Open");
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		        
 		        JFileChooser selectorArchivos = new JFileChooser();
@@ -173,5 +190,7 @@ public class interfazGrafica {
 		textField.setEditable(false);
 		frmProyectoFinalWeka.getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		
 	}
 }
